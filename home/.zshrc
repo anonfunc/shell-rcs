@@ -6,6 +6,7 @@ then
   echo "Creating a zgen save"
   # prezto options
   zgen prezto editor key-bindings 'emacs'
+  zgen prezto prompt theme 'peepcode'
 
   # prezto modules
   zgen prezto
@@ -25,8 +26,15 @@ then
   # should be last
   zgen prezto prompt
 
+  # mine
+  zgen load .zsh.d/my-misc
+
   # misc
   zgen load djui/alias-tips
+  zgen load oz/safe-paste
+  zgen load marzocchi/zsh-notify
+  zgen load hchbaw/zce.zsh
+  bindkey "^Xj" zce
 
   if [[ $(uname) == Darwin ]]
   then
@@ -35,7 +43,14 @@ then
 
   fi
 
+  if hash fzf 2>/dev/null
+  then
+    zgen load b4b4r07/enhancd
+  fi
+
+
   # save
   zgen save
 fi
 
+source "${HOME}/.homesick/repos/homeshick/homeshick.sh"
