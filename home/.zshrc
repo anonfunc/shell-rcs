@@ -1,11 +1,12 @@
 source "${HOME}/.zsh.d/zgen/zgen.zsh"
-ZGEN_RESET_ON_CHANGE=("${HOME}/.zshrc")
+ZGEN_RESET_ON_CHANGE=("${HOME}/.zshrc" "${HOME}/.zsh.d/my-misc/"*)
 
 if ! zgen saved
 then
   echo "Creating a zgen save"
   # prezto options
   zgen prezto editor key-bindings 'emacs'
+  zgen prezto editor info:completing '...'
   zgen prezto prompt theme 'peepcode'
 
   # prezto modules
@@ -21,7 +22,6 @@ then
   zgen prezto history-substring-search
   zgen prezto git
   zgen prezto command-not-found
-  zgen prezto syntax-highlighting
 
   # should be last
   zgen prezto prompt
@@ -29,7 +29,11 @@ then
   # mine
   zgen load .zsh.d/my-misc
 
+
   # misc
+  #zgen load jimmijj/zsh-syntax-highlighting
+  #zgen load tarruda/zsh-autosuggestions
+
   zgen load djui/alias-tips
   zgen load oz/safe-paste
   zgen load marzocchi/zsh-notify
@@ -52,5 +56,3 @@ then
   # save
   zgen save
 fi
-
-source "${HOME}/.homesick/repos/homeshick/homeshick.sh"
