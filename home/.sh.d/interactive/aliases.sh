@@ -1,1 +1,7 @@
-alias magit='e -n -e "(magit-status)"'
+if [[ $(uname) == Darwin ]]
+then
+  alias ls='ls -G'
+else
+  alias ls='ls --color'
+fi
+
