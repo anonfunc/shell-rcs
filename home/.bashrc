@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Path to the bash it configuration
-export BASH_IT="/Users/dholman/.bash_it"
+export BASH_IT="$HOME/.bash_it"
 
 # Lock and Load a custom theme file
 # location /.bash_it/themes/
@@ -29,4 +29,4 @@ export SCM_CHECK=true
 # Load Bash It
 source $BASH_IT/bash_it.sh
 
-source ~/.sh.d/interactive/*
+eval "$(find -L  ~/.sh.d/interactive -type f -name '*.sh' | sort | xargs cat)"
