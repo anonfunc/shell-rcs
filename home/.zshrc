@@ -4,27 +4,6 @@ ZGEN_RESET_ON_CHANGE=("${HOME}/.zshrc" "${HOME}/.zsh.d/"*)
 if ! zgen saved
 then
   echo "Creating a zgen save"
-  # prezto options
-  zgen prezto editor key-bindings 'emacs'
-  zgen prezto editor info:completing '...'
-  zgen prezto prompt theme 'peepcode'
-
-  # prezto modules
-  zgen prezto
-  zgen prezto environment
-  zgen prezto terminal
-  zgen prezto editor
-  zgen prezto history
-  zgen prezto directory
-  zgen prezto spectrum
-  zgen prezto utility
-  zgen prezto completion
-  zgen prezto history-substring-search
-  zgen prezto git
-  zgen prezto command-not-found
-
-  # should be last
-  zgen prezto prompt
 
   # mine
   zgen load .zsh.d/my-misc
@@ -32,8 +11,7 @@ then
 
 
   # misc
-  #zgen load jimmijj/zsh-syntax-highlighting
-  #zgen load tarruda/zsh-autosuggestions
+  zgen load zsh-users/zsh-syntax-highlighting
 
   zgen load djui/alias-tips
   zgen load oz/safe-paste
@@ -41,12 +19,7 @@ then
   zgen load hchbaw/zce.zsh
   bindkey "^Xj" zce
 
-  if [[ $(uname) == Darwin ]]
-  then
-    zgen prezto homebrew
-    zgen prezto osx
-
-  fi
+  zgen load kasperisager/zsh-pure pure
 
   if hash fzf 2>/dev/null
   then
