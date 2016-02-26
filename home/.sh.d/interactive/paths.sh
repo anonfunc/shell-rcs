@@ -5,4 +5,12 @@ my_add_path() {
   fi
 }
 
-my_add_path $HOME/Library/Python/2.7/bin/
+my_add_path $HOME/Library/Python/2.7/bin
+my_add_path $HOME/.local/bin
+my_add_path $HOME/bin
+my_add_path /Applications/Emacs.app/Contents/MacOS/bin
+
+if [[ -f /Applications/Emacs.app/Contents/MacOS/Emacs ]]
+then
+  alias emacs=/Applications/Emacs.app/Contents/MacOS/Emacs
+fi
