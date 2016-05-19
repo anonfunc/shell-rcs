@@ -30,3 +30,5 @@ export SCM_CHECK=true
 source $BASH_IT/bash_it.sh
 
 eval "$(find -L  ~/.sh.d/interactive -type f -name '*.sh' | sort | xargs cat)"
+eval "$(find /usr/local/linkedin/etc/bash /export/content/linkedin/etc/bash 2>/dev/null -type f -exec cat {} \;)"
+

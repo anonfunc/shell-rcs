@@ -15,9 +15,9 @@ function tma () {
     if tmux list-sessions | grep home: | grep -q attached
     then
       # Attach a new client
-      tmux -2 new-session -d -t home -s "client-%self" \;\
+      tmux -2 new-session -d -t home -s "client-$$" \;\
         set-option destroy-unattached \; \
-        attach-session -t "client-%self"
+        attach-session -t "client-$$"
     else
       # Attach to home.  Home isn't auto-detached, so this isn't perfect.
       tmux -2 attach-session -t home

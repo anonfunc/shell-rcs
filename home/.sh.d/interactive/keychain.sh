@@ -1,5 +1,5 @@
 if which keychain > /dev/null
 then
-  eval $(keychain --eval)
+  eval $(keychain -q --eval)
 fi
 

@@ -12,9 +12,10 @@ function tma
     # Is home attached?
     if tmux list-sessions | grep home: | grep -q attached
       # Attach a new client
-      tmux -2 new-session -d -t home -s "client-%self" \;\
+      set pid %self
+      tmux -2 new-session -d -t home -s "client-$pid" \;\
       set-option destroy-unattached \; \
-      attach-session -t "client-%self"
+      attach-session -t "client-$pid"
     else
       # Attach to home.  Home isn't auto-detached, so this isn't perfect.
       tmux -2 attach-session -t home
