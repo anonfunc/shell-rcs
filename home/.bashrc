@@ -32,3 +32,5 @@ source $BASH_IT/bash_it.sh
 eval "$(find -L  ~/.sh.d/interactive -type f -name '*.sh' | sort | xargs cat)"
 eval "$(find /usr/local/linkedin/etc/bash /export/content/linkedin/etc/bash 2>/dev/null -type f -exec cat {} \;)"
 
+export PROMPT_COMMAND='if [ "$(id -u)" -ne 0 ]; then echo "bash: $(date "+%Y-%m-%d.%H:%M:%S") $(pwd) $(history 1)" >> ~/.logs/shell-history-$(date "+%Y-%m-%d").log; fi'
+

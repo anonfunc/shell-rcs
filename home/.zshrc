@@ -16,7 +16,7 @@ then
 
   zgen load djui/alias-tips
   zgen load oz/safe-paste
-  zgen load marzocchi/zsh-notify
+  #zgen load marzocchi/zsh-notify
   zgen load hchbaw/zce.zsh
   bindkey "^Xj" zce
 
