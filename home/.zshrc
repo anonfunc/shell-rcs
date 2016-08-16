@@ -1,30 +1,19 @@
-source "${HOME}/.zsh.d/zgen/zgen.zsh"
-ZGEN_RESET_ON_CHANGE=("${HOME}/.zshrc")
-ZGEN_RESET_ON_CHANGE+=("${HOME}/.zsh.d/my-misc/"*)
-ZGEN_RESET_ON_CHANGE+=("${HOME}/.zsh.d/my-work/"*)
+source ~/.zplug/init.zsh
 
-if ! zgen saved
-then
-  echo "Creating a zgen save"
+# Can manage local plugins
+zplug "~/.zsh.d/my-misc", from:local
+zplug "~/.zsh.d/my-work", from:local
+zplug "zsh-users/zsh-syntax-highlighting", nice:10
+zplug "kasperisager/zsh-pure"
 
-  # mine
-  zgen load ${HOME}/.zsh.d/my-misc
-  zgen load ${HOME}/.zsh.d/my-work
 
-  # misc
-  zgen load zsh-users/zsh-syntax-highlighting
-
-  zgen load djui/alias-tips
-  zgen load oz/safe-paste
-  #zgen load marzocchi/zsh-notify
-  zgen load hchbaw/zce.zsh
-  bindkey "^Xj" zce
-
-  # Prompt
-  zgen load kasperisager/zsh-pure pure
-
-  # save
-  zgen save
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
 fi
 
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Then, source plugins and add commands to $PATH
+zplug load --verbose
