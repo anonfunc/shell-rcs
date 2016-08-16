@@ -1,3 +1,6 @@
 [submodule "zplug"]
 	path = zplug
 	url = https://github.com/zplug/zplug.git
+[submodule "bash-it"]
+	path = bash-it
+	url = https://github.com/Bash-it/bash-it
