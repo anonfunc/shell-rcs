@@ -1,19 +1,22 @@
-source ~/.zplug/init.zsh
+source <(antibody init)
 
-# Can manage local plugins
-zplug "~/.zsh.d/my-misc", from:local
-zplug "~/.zsh.d/my-work", from:local
-zplug "zsh-users/zsh-syntax-highlighting", nice:10
-zplug "kasperisager/zsh-pure"
+fpath=("/usr/local/linkedin/etc/zsh" "/export/content/linkedin/etc/zsh" $fpath)
 
+antibody bundle <<EOF
+mafredri/zsh-async # First
+djui/alias-tips
+junegunn/fzf
+supercrabtree/k
+Tarrasch/zsh-autoenv
+Tarrasch/zsh-bd
+Tarrasch/zsh-colors
+sindresorhus/pure
+$HOME/.zsh.d/my-misc
+$HOME/.zsh.d/my-work
+zsh-users/zsh-completions
+zsh-users/zsh-autosuggestions
+zdharma/fast-syntax-highlighting # Last
+EOF
 
-# Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
-fi
+autoload -U compinit && compinit
 
-# Then, source plugins and add commands to $PATH
-zplug load --verbose
